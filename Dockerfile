@@ -4,10 +4,12 @@ FROM ubuntu
 
 MAINTAINER demo@gmail.com 
 
-
-
-RUN apt-get update 
-
-RUN apt-get install –y nginx 
+RUN apt-get clean && \
+    apt-get update && \
+    apt-get -qy install \
+                wget \
+                telnet \
+                iputils-ping \
+                unzip
 
 CMD [“echo”,”Image created”]
