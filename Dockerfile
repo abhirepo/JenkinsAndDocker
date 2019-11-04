@@ -1,15 +1,18 @@
 #This is a sample Image 
 
-FROM ubuntu 
+FROM ubuntu:18.04 
 
-MAINTAINER demo@gmail.com 
+MAINTAINER Abhishek 
 
 RUN apt-get clean && \
     apt-get update && \
     apt-get -qy install \
-                wget \
-                telnet \
-                iputils-ping \
-                unzip
+                apache2 && rm -rf /var/lib/apt/lists/* 
 
-CMD [“echo”,”Image created”]
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
+ENV APACHE_LOG_DIR /var/log/apache2
+WORKDIR /var/www/html
+COPY index.html /var/www/html
+ADD *.html /var/www/html
+EXPOSE 80
