@@ -2,7 +2,7 @@
 
 FROM ubuntu:18.04 
 
-MAINTAINER Abhishek 
+MAINTAINER Abhikumar 
 
 RUN apt-get clean && \
     apt-get update && \
